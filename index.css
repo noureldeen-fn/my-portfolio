@@ -333,3 +333,62 @@ label.mainicon {
     margin-bottom: 2rem;
   }
 }
+
+/* --- تعديلات قسم Expertise --- */
+
+/* 1. تظبيط مسافة السكشن عشان العنوان ينزل وميلزقش فوق */
+#skills {
+  padding-top: 140px;
+}
+
+/* 2. الشبكة: توسيط ومسافات مضبوطة */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 3. الكارت: مربع ثابت ومحتوى متسنتر (Clean Version) */
+.skill-card {
+  background: rgba(10, 25, 47, 0.85);
+  border: 1px solid rgba(0, 255, 218, 0.1);
+  border-radius: 15px;
+
+  /* صغرنا الحجم لـ 150 عشان يبقى أشيك وميغطيش ع العنوان */
+  width: 150px;
+  height: 150px;
+
+  /* عشان الكلام والأيقونة يجوا في نص المربع بالظبط */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.3s ease;
+  cursor: default;
+}
+
+/* 4. الحركة لما تقف بالماوس */
+.skill-card:hover {
+  transform: translateY(-10px); /* يطلع لفوق */
+  border-color: var(--mint-color); /* البرواز ينور سماوي */
+  box-shadow: 0 0 20px rgba(0, 255, 218, 0.15); /* ظل سماوي خفيف */
+}
+
+/* 5. تنسيق الأيقونة */
+.skill-card i {
+  font-size: 3rem; /* صغرناها سنة بسيطة عشان تليق عالمربع */
+  color: var(--mint-color);
+  margin-bottom: 0.8rem;
+}
+
+/* 6. تنسيق اسم المهارة */
+.skill-card h3 {
+  font-size: 1rem; /* خط مناسب عشان الكلام الطويل ميكسرش */
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+}
