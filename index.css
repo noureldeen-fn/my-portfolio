@@ -347,7 +347,7 @@ label.mainicon {
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -391,4 +391,79 @@ label.mainicon {
   color: #fff;
   font-weight: 500;
   margin: 0;
+}
+
+/* قللنا المسافة من فوق شوية */
+#contact {
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
+
+/* تنسيق الصف الجديد (عشان الاسم والإيميل ييجوا جنب بعض) */
+.form-row {
+  display: flex;
+  gap: 1rem; /* مسافة بينهم */
+}
+
+/* ضغطنا المسافات داخل الفورم */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* كانت 1.5rem خليناها 1rem بس */
+  width: 100%;
+}
+
+/* الكارت الزجاجي نفسه نصغر حوافه شوية */
+.contact-wrapper {
+  padding: 1rem; /* كانت 3rem */
+}
+
+/* خانات الكتابة */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px; /* صغرنا الـ padding جوه الخانة */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.95rem; /* صغرنا الخط سيكا */
+  outline: none;
+  transition: 0.3s;
+}
+
+/* تأكد إن الـ input-group واخد العرض الكامل */
+.input-group {
+  width: 100%;
+}
+
+.contact-text {
+  /* ... باقي الخصائص ... */
+  margin-bottom: 1.2rem; /* زود الرقم ده عشان يبعد عن الفورم */
+}
+
+/* وباقي الأكواد (الزرار والفوكس) زي ما هي... */
+
+/* زرار الإرسال */
+.btn-submit {
+  background: transparent;
+  border: 2px solid var(--mint-color);
+  color: var(--mint-color);
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 1rem;
+  width: fit-content; /* الزرار على قد الكلمة */
+  align-self: center; /* يجي في النص */
+}
+
+.btn-submit:hover {
+  background: var(--mint-color);
+  color: var(--dark-color);
+  box-shadow: 0 0 20px var(--mint-color);
+  transform: translateY(-3px);
 }
