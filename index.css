@@ -129,6 +129,7 @@ header ul li a.btn-contact {
   border-radius: 5px;
   color: var(--mint-color);
   transition: 0.3s;
+  margin-left: 25px;
 }
 
 header ul li a.btn-contact:hover {
@@ -146,7 +147,7 @@ header ul li a.btn-contact:hover {
 ul {
   display: flex;
   list-style: none;
-  gap: 1rem;
+  gap: 1.6rem;
 }
 
 ul li {
@@ -466,4 +467,83 @@ label.mainicon {
   color: var(--dark-color);
   box-shadow: 0 0 20px var(--mint-color);
   transform: translateY(-3px);
+}
+/* --- تنسيقات قسم المشاريع (معدلة لكارت واحد قصير) --- */
+
+#projects {
+  padding-top: 100px; /* ظبطنا المسافة من فوق */
+}
+
+.projects-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+
+  /* التعديل 1: قللنا المسافة دي عشان نرفعه لفوق */
+  margin-top: 1.5rem;
+}
+
+.project-card {
+  background: rgba(10, 25, 47, 0.85);
+  border: 1px solid rgba(0, 255, 218, 0.1);
+  border-radius: 15px;
+  width: 350px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--mint-color);
+}
+
+.project-img {
+  /* التعديل 2: صغرنا ارتفاع الصورة عشان الكارت يقصر */
+  height: 160px;
+  width: 100%;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-info {
+  /* التعديل 3: قللنا الحشو الداخلي عشان نلم الطول */
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.project-info h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.project-info p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.btn-link {
+  color: var(--mint-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-link:hover {
+  text-shadow: 0 0 10px rgba(0, 255, 218, 0.5);
 }
