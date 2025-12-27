@@ -474,24 +474,64 @@ label.mainicon {
 
 /* --- تنسيقات قسم Projects (النسخة الاحترافية المتساوية) --- */
 
+/* --- تنسيقات قسم Projects (Internal Scroll + Equal Heights) --- */
+
+/* 1. إعدادات السكشن الرئيسي: ثابت وممنوع يطول عن الشاشة */
 #projects {
-  padding-top: 100px;
+  height: 100vh; /* طول السكشن قد الشاشة بالظبط */
+  padding-top: 100px; /* مسافة عشان العنوان والناف بار */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* يبدأ رص العناصر من فوق */
+  align-items: center; /* يسنتر العناصر في النص */
+  overflow: hidden; /* يمنع السكشن نفسه إنه يعمل سكرول */
 }
 
+/* 2. الكونتينر: هو ده اللي هيحصل جواه السكرول الداخلي */
 .projects-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 
-  /* 1. التعديل السحري: stretch بيخلي الكروت كلها نفس الطول غصب عنها */
+  /* بيخلي الكروت كلها نفس الطول غصب عنها */
   align-items: stretch;
 
   gap: 2rem;
   width: 100%;
   margin-top: 1.5rem;
+
+  /* === كود السكرول الداخلي === */
+  max-height: 64vh; /* أقصى ارتفاع للصندوق 80% من الشاشة */
+  overflow-y: auto; /* لو الكروت زادت، طلع سكرول رأسي */
+  padding-bottom: 60px; /* مسافة أمان تحت عشان آخر كارت ميبقاش لازق */
+  padding-right: 15px; /* مسافة يمين عشان شريط السكرول مياكلش المحتوى */
+  padding-top: 20px; /* مسافة عشان العنوان والناف بار */
+  scroll-snap-type: y mandatory;
 }
 
+/* === تجميل شريط السكرول (Scrollbar Styling) === */
+.projects-container::-webkit-scrollbar {
+  width: 16px; /*عرض الشريط*/
+}
+
+.projects-container::-webkit-scrollbar-track {
+  background: #0a192f;
+  border-radius: 10px;
+  margin-block: 40px;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+  background-color: var(--mint-color); /* لون "مينت" */
+  border: 5px solid #0a192f; /* عملنا برواز كحلي حوليه عشان يصغره */
+  border-radius: 20px; /* تدويرة ناعمة */
+}
+
+.projects-container::-webkit-scrollbar-thumb:hover {
+  border-width: 4px; /* يكبر سِنة صغيرة لما تمسكه (حركة تفاعلية) */
+}
+
+/* 3. تصميم الكارت (زي ما هو بالظبط) */
 .project-card {
   background: rgba(10, 25, 47, 0.85);
   border: 1px solid rgba(0, 255, 218, 0.1);
@@ -500,9 +540,11 @@ label.mainicon {
   overflow: hidden;
   transition: 0.3s;
 
-  /* 2. خلينا الكارت نفسه فليكس عشان نتحكم في اللي جواه */
+  /* عشان نتحكم في توزيع المحتوى جوه الكارت */
   display: flex;
   flex-direction: column;
+  scroll-snap-align: start;
+  scroll-margin-top: 20px;
 }
 
 .project-card:hover {
@@ -514,7 +556,7 @@ label.mainicon {
 .project-img {
   height: 160px;
   width: 100%;
-  flex-shrink: 0; /* يمنع الصورة إنها تنكمش */
+  flex-shrink: 0;
 }
 
 .project-img img {
@@ -527,11 +569,11 @@ label.mainicon {
   padding: 1.2rem;
   text-align: center;
 
-  /* 3. ده بيخلي الجزء بتاع الكلام يمط عشان يملأ الفراغ */
+  /* يمط عشان يملأ الفراغ */
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* يوزع المسافات ويزق الزراير تحت */
+  justify-content: space-between;
 }
 
 .project-info h3 {
@@ -551,7 +593,7 @@ label.mainicon {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: auto; /* يزق الزراير لآخر الكارت تحت خالص */
+  margin-top: auto;
 }
 
 .btn-link {
@@ -564,4 +606,31 @@ label.mainicon {
 
 .btn-link:hover {
   text-shadow: 0 0 10px rgba(0, 255, 218, 0.5);
+}
+
+/* --- زرار الواتساب العايم --- */
+.whatsapp-btn {
+  position: fixed; /* يخليه ثابت في الشاشة */
+  bottom: 25px; /* المسافة من تحت */
+  right: 25px; /* المسافة من اليمين */
+  width: 50px; /* العرض */
+  height: 50px; /* الطول */
+  background-color: #25d366; /* لون واتساب الرسمي */
+  color: #fff; /* لون الأيقونة أبيض */
+  border-radius: 50%; /* يخليه مدور */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px; /* حجم الأيقونة */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* ظل خفيف */
+  z-index: 1000; /* يخليه فوق أي حاجة في الموقع */
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* حركة لما الماوس ييجي عليه */
+.whatsapp-btn:hover {
+  transform: scale(1.1); /* يكبر سنة بسيطة */
+  background-color: #20b857; /* يغمق سنة */
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); /* يعمل وهج أخضر */
 }
